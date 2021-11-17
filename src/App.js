@@ -20,7 +20,7 @@ function App() {
           className="navbar-btn"
           onClick={() => history.push("/user")}
         >
-          User
+          UserList
         </Button>
 
         <Button
