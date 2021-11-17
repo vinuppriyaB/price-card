@@ -1,83 +1,50 @@
-
-import './App.css';
-import { PriceCard } from './PriceCard';
-
-
-
-
-import {  useState } from "react";
-import { Switch, Route,  Redirect } from "react-router-dom";
-// import Card from "@mui/material/Card";
-
-
- 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
- import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
+import "./App.css";
+// import { PriceCard } from './PriceCard';
+// import {  useState } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
-// import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import { Mode } from "@mui/icons-material";
-import HomeIcon from '@mui/icons-material/Home';
-import {UserDetails} from './UserDetails';
-
-
-
-
-
-
-
+import { UserDetails } from "./UserDetails";
+// import {Dashboard} from "./Dashboard";
+import { AddUser } from "./AddUser";
+import { EditRow } from "./EditRow";
 
 function App() {
   const history = useHistory();
-  return(
+  return (
     <div className="App">
+      <div className="user-navbar">
+        <Button
+          color="inherit"
+          variant="text"
+          className="navbar-btn"
+          onClick={() => history.push("/user")}
+        >
+          User
+        </Button>
 
-     
-       
-            <Button color="inherit" variant="text" onClick={()=>history.push("/pricecard")}>
-              PriceCard
-            </Button>
-            
-            <Button  color="inherit" variant="text" onClick={()=>history.push("/userdetails")}>
-            UserDetails
-            </Button>
-            
-          
-
-     
-      
-      
-      <br></br>
-
-      
-
+        <Button
+          color="inherit"
+          variant="text"
+          className="navbar-btn"
+          onClick={() => history.push("/adduser")}
+        >
+          AddUser
+        </Button>
+      </div>
       <Switch>
-        
-
-       
-       
-
-        <Route  path="/userdetails">
-          
-          <UserDetails  />
-          
-          
+        <Route exact path="/user/edit/:id">
+          <EditRow />
         </Route>
-        <Route  path="/pricecard">
-          
-        <PriceCard/>
-          
-          
+
+        <Route path="/user">
+          <UserDetails />
         </Route>
-        
+        <Route path="/adduser">
+          <AddUser />
+        </Route>
       </Switch>
     </div>
-   
-  )
-  
- 
+  );
 }
 export default App;
